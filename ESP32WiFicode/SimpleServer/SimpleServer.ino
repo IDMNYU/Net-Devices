@@ -1,13 +1,13 @@
 #include <WiFi.h>
 
-const char ssid[] = "butt";
-const char password[] = "alaintower";
+const char ssid[] = "sebadoh";
+const char password[] = "bakesale";
 
 WiFiServer server(80);
 
 void setup() {
   Serial.begin(115200);
-  while (!Serial) { ; }
+  // while (!Serial) { ; }
   pinMode(LED_BUILTIN, OUTPUT);  // set the LED pin mode
 
 

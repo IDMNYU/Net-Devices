@@ -1,7 +1,7 @@
 #include <WiFi.h>
 
-char ssid[] = "butt";        // your network SSID (name)
-char pass[] = "alaintower";  // your network password
+const char ssid[] = "sebadoh";   // your network SSID (name)
+const char pass[] = "bakesale";  // your network password
 
 WiFiServer server(80);
 
@@ -10,9 +10,9 @@ void setup() {
   pinMode(LEDG, OUTPUT);
   pinMode(LEDB, OUTPUT);
   Serial.begin(115200);  // initialize serial communication
-  while (!Serial) {
-    ;;
-  }
+  // while (!Serial) {
+  //   ;;
+  // }
   WiFi.mode(WIFI_STA); /* Configure ESP32 in STA Mode */
   Serial.print("Attempting to connect to Network named: ");
   Serial.println(ssid);  // print the network name (SSID);

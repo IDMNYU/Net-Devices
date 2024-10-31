@@ -1,14 +1,14 @@
 #include <WiFi.h>
 
-const char ssid[] = "butt";        // change your network SSID (name)
-const char pass[] = "alaintower";  // change your network password (use for WPA, or use as key for WEP)
+const char ssid[] = "sebadoh";        // change your network SSID (name)
+const char pass[] = "bakesale";  // change your network password (use for WPA, or use as key for WEP)
 
 WiFiServer server(80);
 
 void setup() {
   //Initialize serial and wait for port to open:
   Serial.begin(115200);
-  delay(1000);
+  while(!Serial){;;}
   WiFi.mode(WIFI_STA); /* Configure ESP32 in STA Mode */
   Serial.print("Attempting to connect to SSID: ");
   WiFi.begin(ssid, pass);
