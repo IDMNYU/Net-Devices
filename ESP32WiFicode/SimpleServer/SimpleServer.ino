@@ -1,20 +1,20 @@
 #include <WiFi.h>
 
-const char ssid[] = "sebadoh";
-const char password[] = "bakesale";
+const char ssid[] = "bort";
+const char password[] = "scott370";
 
 WiFiServer server(80);
 
 void setup() {
   Serial.begin(115200);
-  // while (!Serial) { ; }
+  while (!Serial) { ; }
   pinMode(LED_BUILTIN, OUTPUT);  // set the LED pin mode
 
 
   // start by connecting to a WiFi network
   Serial.print("Connecting to ");
   Serial.println(ssid);
-  WiFi.mode(WIFI_STA); // Configure ESP32 in STA Mode
+  WiFi.mode(WIFI_STA);  // Configure ESP32 in STA Mode
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
@@ -32,9 +32,9 @@ void setup() {
 void loop() {
   WiFiClient client = server.available();  // listen for incoming clients
 
-  if (client) {                     // if you get a client,
+  if (client) {                          // if you get a client,
     Serial.println("client connected");  // print a message out the serial port
-    String currentLine = "";        // make a String to hold incoming data from the client
+    String currentLine = "";             // make a String to hold incoming data from the client
 
     while (client.connected()) {  // loop while the client's connected
       if (client.available()) {   // if there's bytes to read from the client,
@@ -53,8 +53,16 @@ void loop() {
             client.println();
 
             // the content of the HTTP response follows the header:
-            client.print("Click <a href=\"/H\">here</a> to turn the LED on.<br>");
-            client.print("Click <a href=\"/L\">here</a> to turn the LED off.<br>");
+            client.print("<html>");
+            client.print("<head>");
+            client.print("<title>");
+            client.print("My ESP32 is rad");
+            client.print("</title>");
+            client.print("</head>");
+            client.print("<body>");
+            client.print("<h1>Hello Internet</h1>");
+            client.print("</body>");
+            client.print("</html>");
 
             // The HTTP response ends with another blank line:
             client.println();
@@ -65,14 +73,6 @@ void loop() {
           }
         } else if (c != '\r') {  // if you got anything else but a carriage return character,
           currentLine += c;      // add it to the end of the currentLine
-        }
-
-        // Check to see if the client request was "GET /H" or "GET /L":
-        if (currentLine.endsWith("GET /H")) {
-          digitalWrite(LED_BUILTIN, HIGH);  // GET /H turns the LED on
-        }
-        if (currentLine.endsWith("GET /L")) {
-          digitalWrite(LED_BUILTIN, LOW);  // GET /L turns the LED off
         }
       }
     }
