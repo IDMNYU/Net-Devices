@@ -36,7 +36,7 @@ void setup() {
   Serial.println(WiFi.localIP());
 
   Serial.println("Starting UDP");
-  Udp.begin(localPort);
+  udp.begin(localPort);
   Serial.print("Local port: ");
   Serial.println(localPort);
 }
@@ -45,7 +45,7 @@ void setup() {
 // argument is the OSC received 
 void led(OSCMessage &msg) {
   int brightness = msg.getInt(0); // read the value from the OSC message
-  analogWrite(LED_BUILTIN, onOff);
+  analogWrite(LED_BUILTIN, brightness);
   Serial.print("/led: ");
   Serial.println(brightness);
 }
