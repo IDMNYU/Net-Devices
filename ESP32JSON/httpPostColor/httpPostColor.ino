@@ -57,7 +57,7 @@ void makeRequest() {
     parseJSON(payload);
   } else {  // if we have a problem, report it
     Serial.print("HTTP POST... failed, error: ");
-    Serial.println(http.errorToString(httpCode).c_str());
+    Serial.println(client.errorToString(httpCode).c_str());
   }
   // Free resources
   client.end();
