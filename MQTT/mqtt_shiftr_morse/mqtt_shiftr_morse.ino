@@ -40,7 +40,6 @@ void setup() {
   // attempt to connect to WiFi network:
   Serial.print("Attempting to connect to WPA SSID: ");
   Serial.println(ssid);
-  WiFi.mode(WIFI_STA);  // Configure ESP32 in STA Mode
   WiFi.begin(ssid, pass);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
