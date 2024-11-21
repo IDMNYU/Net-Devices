@@ -98,7 +98,7 @@ void messageReceived(String cha) {
     } else if (ch == ' ') {
       delay(dotDelay * 4);
     }
-    Serial.print(ch);
+    // Serial.print(ch);
   }
   Serial.println();
 }
