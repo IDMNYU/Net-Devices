@@ -51,7 +51,7 @@ void setup() {
 
   // You can provide a unique client ID, if not set the library uses Arduino-millis()
   // Each client must have a unique client ID
-  mqttClient.setId("reader");
+  mqttClient.setId("Scott's Relay");
 
   // You can provide a username and password for authentication
   mqttClient.setUsernamePassword("lampy", "6WPWBDct3jb7qiLy");
